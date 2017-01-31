@@ -1,0 +1,11 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    padding-top: 70px;
+}
+.active-menu{
+    color: #333 !important;
+    text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        padding-top: 70px;
+    }
+.banner{
+    display: none;
+    height: 500px;
+    background: url(../images/Resources.png) 50% 50% no-repeat;
+    text-align: center;
+}
+.active-menu{
+    color: #333 !important;
+    text-decoration: underline;
+}
