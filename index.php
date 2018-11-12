@@ -29,4 +29,3 @@ function __autoload($class)
 DataBase::Connect();
 Session::init();
 Router::start();
-?>

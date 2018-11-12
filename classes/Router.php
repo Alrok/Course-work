@@ -5,52 +5,46 @@ class Router
 
     static function start()
     {
-       
+
         $controller_name = 'main';
         $action_name = 'index';
-        $params=array();
+        $params = array();
 
         $routes = explode('/', $_GET['url']);
-        
-        if ( !empty($routes[0]) )
-        {
+
+        if (!empty($routes[0])) {
             $controller_name = $routes[0];
         }
-        
-        if ( !empty($routes[1]) )
-        {
+
+        if (!empty($routes[1])) {
             $action_name = $routes[1];
         }
-        
-        for ($i = 2; $i < sizeof($routes); $i ++) {
-            $params[$i-2] = $routes[$i];
+
+        for ($i = 2; $i < sizeof($routes); $i++) {
+            $params[$i - 2] = $routes[$i];
         }
-        
-        $controller_name = strtolower($controller_name).'_Controller';
-        $action_name = strtolower($action_name).'Action';
-        
-        $controller_file = $controller_name.'.php';
-        $controller_path = "controllers/".$controller_file;
-        if(!file_exists($controller_path))
-        {
+
+        $controller_name = strtolower($controller_name) . '_Controller';
+        $action_name = strtolower($action_name) . 'Action';
+
+        $controller_file = $controller_name . '.php';
+        $controller_path = "controllers/" . $controller_file;
+        if (!file_exists($controller_path)) {
             Router::ErrorPage404();
 
         }
-        
-        if(class_exists($controller_name)){
+
+        if (class_exists($controller_name)) {
 
             $controller = new $controller_name;
             $action = $action_name;
         }
 
 
-        if(method_exists($controller, $action))
-        {
-            
+        if (method_exists($controller, $action)) {
+
             $controller->$action($params);
-        }
-        else
-        {
+        } else {
             Router::ErrorPage404();
         }
 
